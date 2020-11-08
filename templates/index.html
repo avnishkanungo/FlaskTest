@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <link rel="stylesheet" href="static/css/main.css">
+    </head>
+    <body>
+        <h1>{{ title }}</h1>
+        <form>
+            <label for="number">Number:</label>
+            <input type="text" id="fname" name="fname"><br><br>
+          </form>
+        <button id="click">Send SMS</button>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            // load Branch
+            (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking".split(" "), 0);
+            // init Branch
+            branch.init('key_live_aaUQWpVTUkQ78jigB8CZEhplCEbpSesw');
+          </script>
+        <script>
+            $('#click').click(function () {
+                var mobile = $('#fname').val()
+                branch.sendSMS(
+                mobile,
+                {},{ make_new_link: false }, // Default: false. If set to true, sendSMS will generate a new link even if one already exists.
+                        function(err) { console.log(err); }
+            );
+}    
+            )
+ 
+        </script>
+    </body>
+</html>
